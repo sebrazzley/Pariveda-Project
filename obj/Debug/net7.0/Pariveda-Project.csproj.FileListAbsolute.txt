@@ -1,0 +1,15 @@
+C:\Users\sherl\MIS221\Pariveda-Project\bin\Debug\net7.0\Pariveda-Project.exe
+C:\Users\sherl\MIS221\Pariveda-Project\bin\Debug\net7.0\Pariveda-Project.deps.json
+C:\Users\sherl\MIS221\Pariveda-Project\bin\Debug\net7.0\Pariveda-Project.runtimeconfig.json
+C:\Users\sherl\MIS221\Pariveda-Project\bin\Debug\net7.0\Pariveda-Project.dll
+C:\Users\sherl\MIS221\Pariveda-Project\bin\Debug\net7.0\Pariveda-Project.pdb
+C:\Users\sherl\MIS221\Pariveda-Project\obj\Debug\net7.0\Pariveda-Project.csproj.AssemblyReference.cache
+C:\Users\sherl\MIS221\Pariveda-Project\obj\Debug\net7.0\Pariveda-Project.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sherl\MIS221\Pariveda-Project\obj\Debug\net7.0\Pariveda-Project.AssemblyInfoInputs.cache
+C:\Users\sherl\MIS221\Pariveda-Project\obj\Debug\net7.0\Pariveda-Project.AssemblyInfo.cs
+C:\Users\sherl\MIS221\Pariveda-Project\obj\Debug\net7.0\Pariveda-Project.csproj.CoreCompileInputs.cache
+C:\Users\sherl\MIS221\Pariveda-Project\obj\Debug\net7.0\Pariveda-Project.dll
+C:\Users\sherl\MIS221\Pariveda-Project\obj\Debug\net7.0\refint\Pariveda-Project.dll
+C:\Users\sherl\MIS221\Pariveda-Project\obj\Debug\net7.0\Pariveda-Project.pdb
+C:\Users\sherl\MIS221\Pariveda-Project\obj\Debug\net7.0\Pariveda-Project.genruntimeconfig.cache
+C:\Users\sherl\MIS221\Pariveda-Project\obj\Debug\net7.0\ref\Pariveda-Project.dll
