@@ -15,6 +15,8 @@ using Pariveda_Project;
  int caffeineLevel = 1;
  int addictivenessLevel = 1;
  int dayNum = 1;
+ int cupsNum = 0;
+ int money = 50;
 
 //generates random preferences for customers each time you play game
 Random rnd1 = new Random();
@@ -31,7 +33,7 @@ string userInput = GetMenuChoice();
 
 while (userInput != "3")
 {
-    Route(userInput, ref sugarLevel,ref caffeineLevel, ref addictivenessLevel, ref customersThatPurchased, ref sugarCustomersThatStoppedBy, ref dayNum, ref caffeineCustomersThatStoppedBy, ref addictivenessCustomersThatStoppedBy, CUSTOMER_PREFERENCE_1Sugar, CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness, ref totalCustomersThatPurchased, ref totalCustomersThatStoppedBy);
+    Route(userInput, ref sugarLevel,ref caffeineLevel, ref addictivenessLevel, ref customersThatPurchased, ref sugarCustomersThatStoppedBy, ref dayNum, ref caffeineCustomersThatStoppedBy, ref addictivenessCustomersThatStoppedBy, CUSTOMER_PREFERENCE_1Sugar, CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness, ref totalCustomersThatPurchased, ref totalCustomersThatStoppedBy, ref cupsNum, ref money);
     userInput = GetMenuChoice();
     
 }
@@ -81,12 +83,12 @@ static bool ValidMenuChoice(string userInput){
 
 
 //runs menu options
-static void Route(string userInput, ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel,ref int customersThatPurchased, ref int sugarCustomersThatStoppedBy, ref int dayNum,ref int caffeineCustomersThatStoppedBy, ref int addictivenessCustomersThatStoppedBy, int CUSTOMER_PREFERENCE_1Sugar, int CUSTOMER_PREFERENCE_2Caffeine, int CUSTOMER_PREFERENCE_3Addictiveness, ref int totalCustomersThatPurchased, ref int totalCustomersThatStoppedBy){
+static void Route(string userInput, ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel,ref int customersThatPurchased, ref int sugarCustomersThatStoppedBy, ref int dayNum,ref int caffeineCustomersThatStoppedBy, ref int addictivenessCustomersThatStoppedBy, int CUSTOMER_PREFERENCE_1Sugar, int CUSTOMER_PREFERENCE_2Caffeine, int CUSTOMER_PREFERENCE_3Addictiveness, ref int totalCustomersThatPurchased, ref int totalCustomersThatStoppedBy, ref int cupsNum, ref int money){
     if(userInput == "1")
     {
         WelcomeMessage();
         Console.Clear();
-        EnergyDrinkSettings(ref sugarLevel, ref caffeineLevel, ref addictivenessLevel);
+        EnergyDrinkSettings(ref sugarLevel, ref caffeineLevel, ref addictivenessLevel, ref cupsNum, ref money);
         Console.Clear();
         DisplayStandOpen1();
         Thread.Sleep(800);
@@ -102,19 +104,19 @@ static void Route(string userInput, ref int sugarLevel, ref int caffeineLevel, r
         Console.Clear();
         DisplayStandOpen5();
         Thread.Sleep(1000);
-        Purchases(ref sugarLevel, ref caffeineLevel, ref addictivenessLevel,ref customersThatPurchased, ref sugarCustomersThatStoppedBy, ref caffeineCustomersThatStoppedBy, ref addictivenessCustomersThatStoppedBy, CUSTOMER_PREFERENCE_1Sugar, CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness, ref totalCustomersThatPurchased, ref totalCustomersThatStoppedBy);
+        Purchases(ref sugarLevel, ref caffeineLevel, ref addictivenessLevel,ref customersThatPurchased, ref sugarCustomersThatStoppedBy, ref caffeineCustomersThatStoppedBy, ref addictivenessCustomersThatStoppedBy, CUSTOMER_PREFERENCE_1Sugar, CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness, ref totalCustomersThatPurchased, ref totalCustomersThatStoppedBy, ref cupsNum, ref money);
         Thread.Sleep(800);
         Console.Clear();
-        Feedback(ref sugarCustomersThatStoppedBy, ref caffeineCustomersThatStoppedBy,ref addictivenessCustomersThatStoppedBy, ref customersThatPurchased,ref dayNum, ref sugarLevel, ref caffeineLevel, ref addictivenessLevel,  CUSTOMER_PREFERENCE_1Sugar,  CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness);
+        Feedback(ref sugarCustomersThatStoppedBy, ref caffeineCustomersThatStoppedBy,ref addictivenessCustomersThatStoppedBy, ref customersThatPurchased,ref dayNum, ref sugarLevel, ref caffeineLevel, ref addictivenessLevel,  CUSTOMER_PREFERENCE_1Sugar,  CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness, ref cupsNum, ref money);
         dayNum++;
 
-        while(dayNum != 5)
+        while(dayNum != 3)
         {
              Random rnd = new Random();
             sugarCustomersThatStoppedBy = rnd.Next(10,16);
             caffeineCustomersThatStoppedBy =rnd.Next(10,16);
             addictivenessCustomersThatStoppedBy =rnd.Next(10,16);
-            EnergyDrinkSettings(ref sugarLevel, ref caffeineLevel, ref addictivenessLevel);
+            EnergyDrinkSettings(ref sugarLevel, ref caffeineLevel, ref addictivenessLevel, ref cupsNum, ref money);
             Console.Clear();
             DisplayStandOpen1();
             Thread.Sleep(800);
@@ -130,13 +132,13 @@ static void Route(string userInput, ref int sugarLevel, ref int caffeineLevel, r
             Console.Clear();
             DisplayStandOpen5();
             Thread.Sleep(1000);
-            Purchases(ref sugarLevel,ref caffeineLevel, ref addictivenessLevel, ref customersThatPurchased, ref sugarCustomersThatStoppedBy, ref addictivenessCustomersThatStoppedBy, ref caffeineCustomersThatStoppedBy, CUSTOMER_PREFERENCE_1Sugar, CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness, ref totalCustomersThatPurchased, ref totalCustomersThatStoppedBy);
+            Purchases(ref sugarLevel,ref caffeineLevel, ref addictivenessLevel, ref customersThatPurchased, ref sugarCustomersThatStoppedBy, ref addictivenessCustomersThatStoppedBy, ref caffeineCustomersThatStoppedBy, CUSTOMER_PREFERENCE_1Sugar, CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness, ref totalCustomersThatPurchased, ref totalCustomersThatStoppedBy, ref cupsNum, ref money);
             Thread.Sleep(800);
             Console.Clear();
-            Feedback(ref sugarCustomersThatStoppedBy, ref caffeineCustomersThatStoppedBy,ref addictivenessCustomersThatStoppedBy, ref customersThatPurchased,ref dayNum, ref sugarLevel, ref caffeineLevel, ref addictivenessLevel,  CUSTOMER_PREFERENCE_1Sugar,  CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness);
+            Feedback(ref sugarCustomersThatStoppedBy, ref caffeineCustomersThatStoppedBy,ref addictivenessCustomersThatStoppedBy, ref customersThatPurchased,ref dayNum, ref sugarLevel, ref caffeineLevel, ref addictivenessLevel,  CUSTOMER_PREFERENCE_1Sugar,  CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness, ref cupsNum, ref money);
             dayNum++;
         }
-        GameResults(ref totalCustomersThatPurchased, ref totalCustomersThatStoppedBy, ref sugarLevel, ref caffeineLevel, ref addictivenessLevel, ref dayNum);
+        GameResults(ref totalCustomersThatPurchased, ref totalCustomersThatStoppedBy, ref sugarLevel, ref caffeineLevel, ref addictivenessLevel, ref dayNum, ref money);
 
 
 
@@ -177,16 +179,19 @@ static void Instructions()
     System.Console.WriteLine("");
     System.Console.WriteLine("About Game:");
     System.Console.WriteLine("             UA Energy is an energy drink tycoon game. You will have 4 days to create the");
-    System.Console.WriteLine("             the best energy drink has every seen! The goal is to sell as many drinks as you");
-    System.Console.WriteLine("             as you can. Its finals week and they are depending on you! Best of luck!"); 
+    System.Console.WriteLine("             the best energy drink has every seen! The goal is to sell as many drinks and make as ");
+    System.Console.WriteLine("             much money as you can. Its finals week and they are depending on you! Best of luck!"); 
     System.Console.WriteLine("");
     System.Console.WriteLine("");
     System.Console.WriteLine("Instructions: ");
-    System.Console.WriteLine("              Create an energy drink with 3 components: sugar, caffeine, and addictiveness");
+    System.Console.WriteLine("              Create and sell a $5 energy drink with 3 components: sugar, caffeine, and addictiveness");
     System.Console.WriteLine("              At the start of each day, you will be able to change the level of each of ");
     System.Console.WriteLine("              these ingredients. You can change it on a scale of 1 to 5. 1 being the");
     System.Console.WriteLine("              least amount of this product. Listen to customer feedback and tailor your");
-    System.Console.WriteLine("              drink until it's perfect! ");
+    System.Console.WriteLine("              drink until it's perfect! Also, you have to buy cup inventory. If you run out of cups, ");
+    System.Console.WriteLine("              that is a missed opportunity to sell your drink that day! Make sure you keep an eye on");
+    System.Console.WriteLine("              your cup inventory!");
+
 
     Console.WriteLine("Press any key to return to the menu");
     Console.ReadKey();
@@ -195,24 +200,12 @@ static void Instructions()
 }
 
 //allows user to change drink recipe and error checks for correct input
-static void EnergyDrinkSettings(ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel)
+static void EnergyDrinkSettings(ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel, ref int cupNum, ref int money)
 {
     string userInput = "";
 
     int yes = -1;
 
-
-    System.Console.WriteLine("(((((((((((((((((((((((((((((((((((((((((((((((((((((()))))))))))))))))))))))))))))))))))))))))))))))))))))))");
-    System.Console.WriteLine("|        /$$   /$$  /$$$$$$        /$$$$$$$$ /$$   /$$ /$$$$$$$$ /$$$$$$$    /$$$$$$$ /$$     /$$|          |");
-    System.Console.WriteLine("|       | $$  | $$ /$$__  $$      | $$_____/| $$$ | $$| $$_____/| $$__  $$  /$$__  $$|  $$   /$$/           |");
-    System.Console.WriteLine("|       | $$  | $$| $$  \'$$       | $$      | $$$$| $$| $$      | $$  \'  $$| $$ \' __/ \'  $$ /$$/            |");
-    System.Console.WriteLine("|       | $$  | $$| $$$$$$$$      | $$$$$   | $$ $$ $$| $$$$$   | $$$$$$$/ | $$ /$$$$  \'  $$$$/             |");
-    System.Console.WriteLine("|       | $$  | $$| $$__  $$      | $$__/   | $$  $$$$| $$__/   | $$__  $$ | $$|_  $$   \'  $$/              |");
-    System.Console.WriteLine("|       | $$  | $$| $$  | $$      | $$      | $$\' $$$ | $$      | $$  \'  $$| $$  \' $$    | $$               |");
-    System.Console.WriteLine("|       |  $$$$$$/| $$  | $$      | $$$$$$$$| $$ \' $$ | $$$$$$$$| $$  |  $$|  $$$$$$/    | $$               |");
-    System.Console.WriteLine("|        \'_____/ |__/  |__/       |________/|__/  \'_ /|________/|__/  |__/  \'______/     |__/               |");
-    System.Console.WriteLine("(((((((((((((((((((((((((((((((((((((((((((((((((((((()))))))))))))))))))))))))))))))))))))))))))))))))))))))");
-    System.Console.WriteLine("");
     System.Console.WriteLine("");
     System.Console.WriteLine("* *");
     System.Console.WriteLine("Sugar Content");
@@ -343,6 +336,49 @@ static void EnergyDrinkSettings(ref int sugarLevel, ref int caffeineLevel, ref i
             userInput = System.Console.ReadLine();
         }
     }
+    yes = -1;
+
+    System.Console.WriteLine("* *");
+    System.Console.WriteLine("   Price of cups: 2 Dollars");
+    System.Console.WriteLine("");
+    System.Console.WriteLine("                               Current money: $" + money + " dollars");
+    System.Console.WriteLine("                               Current cup inventory: " + cupNum);
+    System.Console.WriteLine("");
+    System.Console.WriteLine("How many cups would you like to buy?");
+    
+    //checks for correct data input
+    
+    while(yes == -1)
+    {
+        userInput = System.Console.ReadLine();
+        if(int.TryParse(userInput, out int cupNumTemp))
+        {
+            if(cupNumTemp >= 0)
+            {
+                money = money - cupNumTemp*2;
+                cupNum += cupNumTemp;
+                System.Console.WriteLine("");
+                System.Console.WriteLine("                               Current money: $" + money);
+                System.Console.WriteLine("                               You have " + cupNum + " cups available!");
+                System.Console.WriteLine("");
+                System.Console.WriteLine("");
+                yes = 1;
+                
+            }
+            else   
+            {
+                yes = -1;
+                System.Console.WriteLine("Invalid input, try again!");
+            } 
+            
+        }
+        else
+        {
+            System.Console.WriteLine("Invalid input, try again!");
+            userInput = System.Console.ReadLine();
+        }
+    }
+
 
 
     Console.WriteLine("Press any key to start the day");
@@ -556,7 +592,7 @@ customerAddictiveness.SetPreference(CUSTOMER_PREFERENCE_3Addictiveness);
 
 
 //calculates the number of customers that purchased your goods
-static void Purchases (ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel, ref int customersThatPurchased, ref int sugarCustomersThatStoppedBy, ref int addictivenessCustomersThatStoppedBy, ref int caffeineCustomersThatStoppedBy, int CUSTOMER_PREFERENCE_1Sugar, int CUSTOMER_PREFERENCE_2Caffeine, int CUSTOMER_PREFERENCE_3Addictiveness, ref int totalCustomersThatPurchased, ref int totalCustomersThatStoppedBy)
+static void Purchases (ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel, ref int customersThatPurchased, ref int sugarCustomersThatStoppedBy, ref int addictivenessCustomersThatStoppedBy, ref int caffeineCustomersThatStoppedBy, int CUSTOMER_PREFERENCE_1Sugar, int CUSTOMER_PREFERENCE_2Caffeine, int CUSTOMER_PREFERENCE_3Addictiveness, ref int totalCustomersThatPurchased, ref int totalCustomersThatStoppedBy, ref int cupNum, ref int money)
 {
     if(CUSTOMER_PREFERENCE_1Sugar == sugarLevel)
     {
@@ -624,13 +660,26 @@ static void Purchases (ref int sugarLevel, ref int caffeineLevel, ref int addict
         customersThatPurchased += (int)(addictivenessCustomersThatStoppedBy*.20);
     }
 
+
+    if(cupNum - customersThatPurchased  < 0)
+    {
+        customersThatPurchased = cupNum;
+        cupNum = 0;
+        money = money + (5*customersThatPurchased);
+    }
+    else
+    {
+        cupNum = cupNum - customersThatPurchased;
+        money = money + (5*customersThatPurchased);
+    }
+
     totalCustomersThatPurchased += customersThatPurchased;
     totalCustomersThatStoppedBy += sugarCustomersThatStoppedBy + caffeineCustomersThatStoppedBy + addictivenessCustomersThatStoppedBy;
 
 }
 
 //displays recept feedback
-static void Feedback(ref int sugarCustomersThatStoppedBy, ref int caffeineCustomersThatStoppedBy, ref int addictivenessCustomersThatStoppedBy, ref int customersThatPurchased, ref int dayNum, ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel, int CUSTOMER_PREFERENCE_1Sugar, int CUSTOMER_PREFERENCE_2Caffeine, int CUSTOMER_PREFERENCE_3Addictiveness)
+static void Feedback(ref int sugarCustomersThatStoppedBy, ref int caffeineCustomersThatStoppedBy, ref int addictivenessCustomersThatStoppedBy, ref int customersThatPurchased, ref int dayNum, ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel, int CUSTOMER_PREFERENCE_1Sugar, int CUSTOMER_PREFERENCE_2Caffeine, int CUSTOMER_PREFERENCE_3Addictiveness, ref int cupNum, ref int money)
 {
     int totalCustomers = sugarCustomersThatStoppedBy + caffeineCustomersThatStoppedBy + addictivenessCustomersThatStoppedBy;
     System.Console.WriteLine(" 0000000000000000000000000000000000");
@@ -639,7 +688,16 @@ static void Feedback(ref int sugarCustomersThatStoppedBy, ref int caffeineCustom
     System.Console.WriteLine("0              DAY " + dayNum + "               0");
     System.Console.WriteLine("0                                  0");  
     System.Console.WriteLine("0 Total Customers ------------ " + totalCustomers + "  0");
-    System.Console.WriteLine("0 Total Energy Drinks Sold ---- " + customersThatPurchased + " 0");
+    System.Console.WriteLine("0 Total Energy Drinks Sold ---- " + customersThatPurchased + "  0");
+    System.Console.WriteLine("0 Money Earned: $"+ money + "                0");
+    
+    if(cupNum - customersThatPurchased  < 0)
+    {
+        System.Console.WriteLine("0                                  0");
+        System.Console.WriteLine("0 *** You ran out of cups ***      0");
+        System.Console.WriteLine("0                                  0");
+    }
+
     System.Console.WriteLine("0  ------------------------------  0");
     System.Console.WriteLine("0                                  0");
     System.Console.WriteLine("0             YELP Reviews         0");
@@ -734,7 +792,7 @@ static void FeedbackOptions(ref int sugarLevel, ref int caffeineLevel, ref int a
         System.Console.WriteLine("0        'I wanna keep coming back 0");
         System.Console.WriteLine("0         and back... in a         0");
         System.Console.WriteLine("0         completely healthy way   0");
-        System.Console.WriteLine("0         heh heh '                    0");
+        System.Console.WriteLine("0         heh heh '                0");
         System.Console.WriteLine("0                                  0");
         System.Console.WriteLine("0 *******************************  0");
         System.Console.WriteLine("0           ````````````           0");
@@ -790,45 +848,48 @@ static void FeedbackOptions(ref int sugarLevel, ref int caffeineLevel, ref int a
 }
 
 //shows your overall game stats
-static void GameResults( ref int totalCustomersThatPurchased, ref int totalCustomersThatStoppedBy, ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel, ref int dayNum)
+static void GameResults( ref int totalCustomersThatPurchased, ref int totalCustomersThatStoppedBy, ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel, ref int dayNum, ref int money)
 {
     string score;
+    System.Console.WriteLine("You made " + money + " dollars");
+    System.Console.WriteLine("");
     System.Console.WriteLine("You saw a total of " + totalCustomersThatStoppedBy + " customers that stopped by your shop");
     System.Console.WriteLine("");
     System.Console.WriteLine("Of these, you were able to sell your energy drink to " + totalCustomersThatPurchased + " customers");
+    System.Console.WriteLine("");
 
     //score calculation
 
-    if((totalCustomersThatPurchased/totalCustomersThatStoppedBy)*100 >= 97)
+    if((totalCustomersThatPurchased/(double)(totalCustomersThatStoppedBy))*100 >= 97)
         score = "A+";
-    else if((totalCustomersThatPurchased/totalCustomersThatStoppedBy)*100 >= 93)
+    else if((totalCustomersThatPurchased/(double)(totalCustomersThatStoppedBy))*100 >= 93)
         score = "A";
-    else if((totalCustomersThatPurchased/totalCustomersThatStoppedBy)*100 >= 90)
+    else if((totalCustomersThatPurchased/(double)(totalCustomersThatStoppedBy))*100 >= 90)
         score = "A-";
-    else if((totalCustomersThatPurchased/totalCustomersThatStoppedBy)*100 >= 87)
+    else if((totalCustomersThatPurchased/(double)(totalCustomersThatStoppedBy))*100 >= 87)
         score = "B+";
-    else if((totalCustomersThatPurchased/totalCustomersThatStoppedBy)*100 >= 83)
+    else if((totalCustomersThatPurchased/(double)(totalCustomersThatStoppedBy))*100 >= 83)
         score = "B";
-    else if((totalCustomersThatPurchased/totalCustomersThatStoppedBy)*100 >= 80)
+    else if((totalCustomersThatPurchased/(double)(totalCustomersThatStoppedBy))*100 >= 80)
         score = "B-";
-    else if((totalCustomersThatPurchased/totalCustomersThatStoppedBy)*100 >= 77)
+    else if((totalCustomersThatPurchased/(double)(totalCustomersThatStoppedBy))*100 >= 77)
         score = "C+";
-    else if((totalCustomersThatPurchased/totalCustomersThatStoppedBy)*100 >= 73)
+    else if((totalCustomersThatPurchased/(double)(totalCustomersThatStoppedBy))*100 >= 73)
         score = "C";
-    else if((totalCustomersThatPurchased/totalCustomersThatStoppedBy)*100 >= 70)
+    else if((totalCustomersThatPurchased/(double)(totalCustomersThatStoppedBy))*100 >= 70)
         score = "C-";
-    else if((totalCustomersThatPurchased/totalCustomersThatStoppedBy)*100 >= 67)
+    else if((totalCustomersThatPurchased/(double)(totalCustomersThatStoppedBy))*100 >= 67)
         score = "D+";
-    else if((totalCustomersThatPurchased/totalCustomersThatStoppedBy)*100 >= 63)
+    else if((totalCustomersThatPurchased/(double)(totalCustomersThatStoppedBy))*100 >= 63)
         score = "D";
-    else if((totalCustomersThatPurchased/totalCustomersThatStoppedBy)*100 >= 60)
+    else if((totalCustomersThatPurchased/(double)(totalCustomersThatStoppedBy))*100 >= 60)
         score = "D-";
     else
         score = "F";
  
-    System.Console.WriteLine("Game score: " + score);
+    System.Console.WriteLine("      Game score: " + score);
     System.Console.WriteLine("");
-    System.Console.WriteLine("Thanks for playing! ");
+    System.Console.WriteLine("     Thanks for playing! ");
 
     sugarLevel =1;
     caffeineLevel =1;
