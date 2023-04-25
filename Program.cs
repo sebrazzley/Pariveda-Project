@@ -110,7 +110,7 @@ static void Route(string userInput, ref int sugarLevel, ref int caffeineLevel, r
         Feedback(ref sugarCustomersThatStoppedBy, ref caffeineCustomersThatStoppedBy,ref addictivenessCustomersThatStoppedBy, ref customersThatPurchased,ref dayNum, ref sugarLevel, ref caffeineLevel, ref addictivenessLevel,  CUSTOMER_PREFERENCE_1Sugar,  CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness, ref cupsNum, ref money);
         dayNum++;
 
-        while(dayNum != 3)
+        while(dayNum != 5)
         {
              Random rnd = new Random();
             sugarCustomersThatStoppedBy = rnd.Next(10,16);
@@ -596,7 +596,7 @@ Customer customerAddictiveness = new Customer();
 customerAddictiveness.SetPreference(CUSTOMER_PREFERENCE_3Addictiveness);
 
 
-//calculates the number of customers that purchased your goods
+//calculates the number of customers that purchased your goods and your money earned
 static void Purchases (ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel, ref int customersThatPurchased, ref int sugarCustomersThatStoppedBy, ref int addictivenessCustomersThatStoppedBy, ref int caffeineCustomersThatStoppedBy, int CUSTOMER_PREFERENCE_1Sugar, int CUSTOMER_PREFERENCE_2Caffeine, int CUSTOMER_PREFERENCE_3Addictiveness, ref int totalCustomersThatPurchased, ref int totalCustomersThatStoppedBy, ref int cupNum, ref int money)
 {
     if(CUSTOMER_PREFERENCE_1Sugar == sugarLevel)
@@ -856,11 +856,11 @@ static void FeedbackOptions(ref int sugarLevel, ref int caffeineLevel, ref int a
 static void GameResults( ref int totalCustomersThatPurchased, ref int totalCustomersThatStoppedBy, ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel, ref int dayNum, ref int money)
 {
     string score;
-    System.Console.WriteLine("You made " + money + " dollars");
+    System.Console.WriteLine("-You made " + money + " dollars");
     System.Console.WriteLine("");
-    System.Console.WriteLine("You saw a total of " + totalCustomersThatStoppedBy + " customers that stopped by your shop");
+    System.Console.WriteLine("-You saw a total of " + totalCustomersThatStoppedBy + " customers that stopped by your shop");
     System.Console.WriteLine("");
-    System.Console.WriteLine("Of these, you were able to sell your energy drink to " + totalCustomersThatPurchased + " customers");
+    System.Console.WriteLine("-Of these, you were able to sell your energy drink to " + totalCustomersThatPurchased + " customers");
     System.Console.WriteLine("");
 
     //score calculation
@@ -896,6 +896,7 @@ static void GameResults( ref int totalCustomersThatPurchased, ref int totalCusto
     System.Console.WriteLine("");
     System.Console.WriteLine("     Thanks for playing! ");
 
+    //resets level for new game
     sugarLevel =1;
     caffeineLevel =1;
     addictivenessLevel=1;
