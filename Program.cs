@@ -7,7 +7,7 @@ using System;
 using Pariveda_Project;
 //MAIN
 
-
+//creation of variables
  int customersThatPurchased = 0;
  int totalCustomersThatPurchased = 0;
  int totalCustomersThatStoppedBy = 0;
@@ -16,6 +16,7 @@ using Pariveda_Project;
  int addictivenessLevel = 1;
  int dayNum = 1;
 
+//generates random preferences for customers each time you play game
 Random rnd1 = new Random();
  int CUSTOMER_PREFERENCE_1Sugar = rnd1.Next(1,6);
  int CUSTOMER_PREFERENCE_2Caffeine = rnd1.Next(1,6);
@@ -41,7 +42,7 @@ while (userInput != "3")
 //END MAIN
 //Menu
 
-
+//retrieves menu choice and error checks for valid menu choice selection
 static string GetMenuChoice(){
     DisplayMenu();
     string userInput = Console.ReadLine();
@@ -59,6 +60,7 @@ static string GetMenuChoice(){
     return userInput;
 }
 
+//displays the menu
 static void DisplayMenu(){
     Console.Clear();
     Console.WriteLine("1:   Play UA Energy");
@@ -66,6 +68,7 @@ static void DisplayMenu(){
     Console.WriteLine("3:   Exit Game");
 }
 
+//Checks for valid menu choice
 static bool ValidMenuChoice(string userInput){
   
    if(userInput == "1" || userInput == "2" || userInput == "3")
@@ -77,10 +80,12 @@ static bool ValidMenuChoice(string userInput){
 }
 
 
+//runs menu options
 static void Route(string userInput, ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel,ref int customersThatPurchased, ref int sugarCustomersThatStoppedBy, ref int dayNum,ref int caffeineCustomersThatStoppedBy, ref int addictivenessCustomersThatStoppedBy, int CUSTOMER_PREFERENCE_1Sugar, int CUSTOMER_PREFERENCE_2Caffeine, int CUSTOMER_PREFERENCE_3Addictiveness, ref int totalCustomersThatPurchased, ref int totalCustomersThatStoppedBy){
     if(userInput == "1")
     {
         WelcomeMessage();
+        Console.Clear();
         EnergyDrinkSettings(ref sugarLevel, ref caffeineLevel, ref addictivenessLevel);
         Console.Clear();
         DisplayStandOpen1();
@@ -144,6 +149,7 @@ static void Route(string userInput, ref int sugarLevel, ref int caffeineLevel, r
 
 //RunGame
 
+//welcome message
 static void WelcomeMessage()
 {
     System.Console.WriteLine("                                    Welcome to UA Energy!");
@@ -164,6 +170,7 @@ static void WelcomeMessage()
     Console.ReadKey();
 }
 
+//displays instructions
 static void Instructions()
 {
     System.Console.WriteLine("Welcome to UA Energy");
@@ -187,8 +194,26 @@ static void Instructions()
     
 }
 
+//allows user to change drink recipe and error checks for correct input
 static void EnergyDrinkSettings(ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel)
 {
+    string userInput = "";
+
+    int yes = -1;
+
+
+    System.Console.WriteLine("(((((((((((((((((((((((((((((((((((((((((((((((((((((()))))))))))))))))))))))))))))))))))))))))))))))))))))))");
+    System.Console.WriteLine("|        /$$   /$$  /$$$$$$        /$$$$$$$$ /$$   /$$ /$$$$$$$$ /$$$$$$$    /$$$$$$$ /$$     /$$|          |");
+    System.Console.WriteLine("|       | $$  | $$ /$$__  $$      | $$_____/| $$$ | $$| $$_____/| $$__  $$  /$$__  $$|  $$   /$$/           |");
+    System.Console.WriteLine("|       | $$  | $$| $$  \'$$       | $$      | $$$$| $$| $$      | $$  \'  $$| $$ \' __/ \'  $$ /$$/            |");
+    System.Console.WriteLine("|       | $$  | $$| $$$$$$$$      | $$$$$   | $$ $$ $$| $$$$$   | $$$$$$$/ | $$ /$$$$  \'  $$$$/             |");
+    System.Console.WriteLine("|       | $$  | $$| $$__  $$      | $$__/   | $$  $$$$| $$__/   | $$__  $$ | $$|_  $$   \'  $$/              |");
+    System.Console.WriteLine("|       | $$  | $$| $$  | $$      | $$      | $$\' $$$ | $$      | $$  \'  $$| $$  \' $$    | $$               |");
+    System.Console.WriteLine("|       |  $$$$$$/| $$  | $$      | $$$$$$$$| $$ \' $$ | $$$$$$$$| $$  |  $$|  $$$$$$/    | $$               |");
+    System.Console.WriteLine("|        \'_____/ |__/  |__/       |________/|__/  \'_ /|________/|__/  |__/  \'______/     |__/               |");
+    System.Console.WriteLine("(((((((((((((((((((((((((((((((((((((((((((((((((((((()))))))))))))))))))))))))))))))))))))))))))))))))))))))");
+    System.Console.WriteLine("");
+    System.Console.WriteLine("");
     System.Console.WriteLine("* *");
     System.Console.WriteLine("Sugar Content");
     System.Console.WriteLine("         ---    ---    ---    ---    ---");
@@ -200,11 +225,41 @@ static void EnergyDrinkSettings(ref int sugarLevel, ref int caffeineLevel, ref i
     System.Console.WriteLine("                               Current Sugar Level: " + sugarLevel);
     System.Console.WriteLine("");
     System.Console.WriteLine("Please enter your desired sugar level");
-    sugarLevel = int.Parse(System.Console.ReadLine());
-    System.Console.WriteLine("");
-    System.Console.WriteLine("                               Updated Current Sugar Level " + sugarLevel);
-    System.Console.WriteLine("");
-    System.Console.WriteLine("");
+    
+   //checks for correct input
+    while(yes == -1)
+    {
+        userInput = System.Console.ReadLine();
+        if(int.TryParse(userInput, out int sugarLevelTemp))
+        {
+            if(sugarLevelTemp >= 1 && sugarLevelTemp <= 5)
+            {
+                sugarLevel=sugarLevelTemp;
+                System.Console.WriteLine("");
+                System.Console.WriteLine("                               Updated Current Sugar Level " + sugarLevel);
+                System.Console.WriteLine("");
+                System.Console.WriteLine("");
+                yes = 1;
+            }
+            else   
+            {
+                yes = -1;
+                System.Console.WriteLine("Invalid input, try again!");
+            } 
+              
+            
+        }
+        else
+        {
+            System.Console.WriteLine("Invalid input, try again!");
+            userInput = System.Console.ReadLine();
+        }
+    }
+    yes = -1;
+    
+    
+
+    
 
     System.Console.WriteLine("* *");
     System.Console.WriteLine("Caffeine Content");
@@ -217,11 +272,35 @@ static void EnergyDrinkSettings(ref int sugarLevel, ref int caffeineLevel, ref i
     System.Console.WriteLine("                               Current Caffeine Level: " + caffeineLevel);
     System.Console.WriteLine("");
     System.Console.WriteLine("Please enter your desired caffeine level");
-    caffeineLevel = int.Parse(System.Console.ReadLine());
-    System.Console.WriteLine("");
-    System.Console.WriteLine("                               Updated Current Caffeine Level " + caffeineLevel);
-    System.Console.WriteLine("");
-    System.Console.WriteLine("");
+    
+    //checks for correct input
+    while(yes == -1)
+    {
+        userInput = System.Console.ReadLine();
+        if(int.TryParse(userInput, out int caffeineLevelTemp))
+        {
+            if(caffeineLevelTemp >= 1 && caffeineLevelTemp <= 5)
+            {
+                caffeineLevel=caffeineLevelTemp;
+                System.Console.WriteLine("");
+                System.Console.WriteLine("                               Updated Current Caffeine Level " + caffeineLevel);
+                System.Console.WriteLine("");
+                System.Console.WriteLine("");
+                yes = 1;
+            }
+            else   
+            {
+                yes = -1;
+                System.Console.WriteLine("Invalid input, try again!");
+            } 
+        }
+        else
+        {
+            System.Console.WriteLine("Invalid input, try again!");
+            userInput = System.Console.ReadLine();
+        }
+    }
+    yes = -1;
 
     System.Console.WriteLine("* *");
     System.Console.WriteLine("   Addictiveness Content");
@@ -234,11 +313,37 @@ static void EnergyDrinkSettings(ref int sugarLevel, ref int caffeineLevel, ref i
     System.Console.WriteLine("                               Current addictiveness Level: " + addictivenessLevel);
     System.Console.WriteLine("");
     System.Console.WriteLine("Please enter your desired addictiveness level");
-    addictivenessLevel = int.Parse(System.Console.ReadLine());
-    System.Console.WriteLine("");
-    System.Console.WriteLine("                               Updated Current Additiveness Level " + addictivenessLevel);
-    System.Console.WriteLine("");
-    System.Console.WriteLine("");
+    
+    //checks for correct data input
+    
+    while(yes == -1)
+    {
+        userInput = System.Console.ReadLine();
+        if(int.TryParse(userInput, out int addictivenessLevelTemp))
+        {
+            if(addictivenessLevelTemp >= 1 && addictivenessLevelTemp <= 5)
+            {
+                addictivenessLevel=addictivenessLevelTemp;
+                System.Console.WriteLine("");
+                System.Console.WriteLine("                               Updated Current Addictiveness Level " + addictivenessLevel);
+                System.Console.WriteLine("");
+                System.Console.WriteLine("");
+                yes = 1;
+            }
+            else   
+            {
+                yes = -1;
+                System.Console.WriteLine("Invalid input, try again!");
+            } 
+            
+        }
+        else
+        {
+            System.Console.WriteLine("Invalid input, try again!");
+            userInput = System.Console.ReadLine();
+        }
+    }
+
 
     Console.WriteLine("Press any key to start the day");
     Console.ReadKey();
@@ -248,6 +353,7 @@ static void EnergyDrinkSettings(ref int sugarLevel, ref int caffeineLevel, ref i
    
 }
 
+//DiplayStandOpen1-5 is animation to simulate customers attending your shop
 static void DisplayStandOpen1()
 {
     System.Console.WriteLine("                                                                -----------------------------------");
@@ -393,38 +499,43 @@ static void DisplayStandOpen4()
 
 static void DisplayStandOpen5()
 {
-    System.Console.WriteLine("                                         -----------------------------------");
-    System.Console.WriteLine("                                         |                 _______         |");
-    System.Console.WriteLine("                                         |                /      /         |");
-    System.Console.WriteLine("                                         |               /      /          |");
-    System.Console.WriteLine("                                         |              /      /__         |");
-    System.Console.WriteLine("                                         |             /__       /         |");
-    System.Console.WriteLine("                                         |               /     /           |");
-    System.Console.WriteLine("                                         |              /    /             |");
-    System.Console.WriteLine("                                         |             /   /               |");
-    System.Console.WriteLine("                                         |            /  /                 |");
-    System.Console.WriteLine("                                         |           / /                   |");
-    System.Console.WriteLine("                                         |           /                     |");
-    System.Console.WriteLine("                                         -----------------------------------");
-    System.Console.WriteLine("                                             |                         |");
-    System.Console.WriteLine("                                             |                         |");
-    System.Console.WriteLine("                                             |                         |");
-    System.Console.WriteLine("                                             |                         |");
-    System.Console.WriteLine("                                             |                         |");
-    System.Console.WriteLine("                                             |                         |");
-    System.Console.WriteLine("                                             |                         |");
-    System.Console.WriteLine("                                             |                         |");
-    System.Console.WriteLine("                                             |                         |");
-    System.Console.WriteLine("                                         ----------------------------------");
-    System.Console.WriteLine("                                         |                                |");
-    System.Console.WriteLine("                                         |                                |");
-    System.Console.WriteLine("                                         |             [CLOSED]           |");
-    System.Console.WriteLine("                                         |                                |");
-    System.Console.WriteLine("                                         |                                |");
-    System.Console.WriteLine("                                         ----------------------------------");
+    System.Console.WriteLine("                                                           -----------------------------------");
+    System.Console.WriteLine("                                                           |                 _______         |");
+    System.Console.WriteLine("                                                           |                /      /         |");
+    System.Console.WriteLine("                                                           |               /      /          |");
+    System.Console.WriteLine("                                                           |              /      /__         |");
+    System.Console.WriteLine("                                                           |             /__       /         |");
+    System.Console.WriteLine("                                                           |               /     /           |");
+    System.Console.WriteLine("                                                           |              /    /             |");
+    System.Console.WriteLine("*******************************************************    |             /   /               |");
+    System.Console.WriteLine("*|  ____|         | |        / _| |  __ \\             *    |            /  /                 |");
+    System.Console.WriteLine("*| |__   _ __   __| |   ___ | |_  | |  | | __ _ _   _ *    |           / /                   |");
+    System.Console.WriteLine("*|  __| | '_ \\ / _` |  / _ \\|  _| | |  | |/ _` | | | |*    |           /                     |");
+    System.Console.WriteLine("*| |____| | | | (_| | | (_) | |   | |__| | (_| | |_| |*    -----------------------------------");
+    System.Console.WriteLine("*|______|_| |_|\\__,_|  \\___/|_|   |_____/ \\__,_|\\__, |*        |                         |");
+    System.Console.WriteLine("*                                                __/ |*        |                         |");
+    System.Console.WriteLine("*                                               |___/ *        |                         |");
+    System.Console.WriteLine("*********************************************************      |                         |");
+    System.Console.WriteLine("                                                               |                         |");
+    System.Console.WriteLine("                                                               |                         |");
+    System.Console.WriteLine("                                                               |                         |");
+    System.Console.WriteLine("                                                               |                         |");
+    System.Console.WriteLine("                                                               |                         |");
+    System.Console.WriteLine("                                                           ----------------------------------");
+    System.Console.WriteLine("                                                           |                                |");
+    System.Console.WriteLine("                                                           |                                |");
+    System.Console.WriteLine("                                                           |             [CLOSED]           |");
+    System.Console.WriteLine("                                                           |                                |");
+    System.Console.WriteLine("                                                           |                                |");
+    System.Console.WriteLine("                                                           ----------------------------------");
+
+
+            
 
 
 
+                                                
+                                               
       
 }
 
@@ -433,7 +544,7 @@ static void DisplayStandOpen5()
 
 
 
-
+//creating customers with their preferences
 Customer customerSugar = new Customer();
 customerSugar.SetPreference(CUSTOMER_PREFERENCE_1Sugar);
 
@@ -444,7 +555,7 @@ Customer customerAddictiveness = new Customer();
 customerAddictiveness.SetPreference(CUSTOMER_PREFERENCE_3Addictiveness);
 
 
-
+//calculates the number of customers that purchased your goods
 static void Purchases (ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel, ref int customersThatPurchased, ref int sugarCustomersThatStoppedBy, ref int addictivenessCustomersThatStoppedBy, ref int caffeineCustomersThatStoppedBy, int CUSTOMER_PREFERENCE_1Sugar, int CUSTOMER_PREFERENCE_2Caffeine, int CUSTOMER_PREFERENCE_3Addictiveness, ref int totalCustomersThatPurchased, ref int totalCustomersThatStoppedBy)
 {
     if(CUSTOMER_PREFERENCE_1Sugar == sugarLevel)
@@ -518,6 +629,7 @@ static void Purchases (ref int sugarLevel, ref int caffeineLevel, ref int addict
 
 }
 
+//displays recept feedback
 static void Feedback(ref int sugarCustomersThatStoppedBy, ref int caffeineCustomersThatStoppedBy, ref int addictivenessCustomersThatStoppedBy, ref int customersThatPurchased, ref int dayNum, ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel, int CUSTOMER_PREFERENCE_1Sugar, int CUSTOMER_PREFERENCE_2Caffeine, int CUSTOMER_PREFERENCE_3Addictiveness)
 {
     int totalCustomers = sugarCustomersThatStoppedBy + caffeineCustomersThatStoppedBy + addictivenessCustomersThatStoppedBy;
@@ -539,7 +651,7 @@ static void Feedback(ref int sugarCustomersThatStoppedBy, ref int caffeineCustom
     Console.ReadKey();
 }
 
-
+//determines what feedback will be shown
 static void FeedbackOptions(ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel, int CUSTOMER_PREFERENCE_1Sugar, int CUSTOMER_PREFERENCE_2Caffeine, int CUSTOMER_PREFERENCE_3Addictiveness)
 {
     //Sugar feedback logic
@@ -677,6 +789,7 @@ static void FeedbackOptions(ref int sugarLevel, ref int caffeineLevel, ref int a
     
 }
 
+//shows your overall game stats
 static void GameResults( ref int totalCustomersThatPurchased, ref int totalCustomersThatStoppedBy, ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel, ref int dayNum)
 {
     string score;
