@@ -172,6 +172,7 @@ static void WelcomeMessage()
     System.Console.WriteLine("(((((((((((((((((((((((((((((((((((((((((((((((((((((()))))))))))))))))))))))))))))))))))))))))))))))))))))))");
     System.Console.WriteLine("");
     System.Console.WriteLine("");
+    System.Console.WriteLine("                            Location: Outside steps of Hewson Hall");
     Console.WriteLine("                                      PRESS ANY KEY TO BEGIN THE GAME");
     Console.ReadKey();
 }
@@ -703,7 +704,7 @@ static void Feedback(ref int sugarCustomersThatStoppedBy, ref int caffeineCustom
     System.Console.WriteLine("0 Total Energy Drinks Sold ---- " + customersThatPurchased + "  0");
     System.Console.WriteLine("0 Money Earned: $" + money + "                0");
 
-    if (cupNum - customersThatPurchased < 0)
+    if (cupNum <= 0)
     {
         System.Console.WriteLine("0                                  0");
         System.Console.WriteLine("0 *** You ran out of cups ***      0");
@@ -944,6 +945,7 @@ static void CupPour(ref int sugarLevel, ref int caffeineLevel, ref int addictive
         Thread.Sleep(600);
         Console.Clear();
 
+        System.Console.WriteLine("");
         System.Console.WriteLine("                          *  ** * * * * * * *");
         System.Console.WriteLine("                           * *  * ** * ** ");
         System.Console.WriteLine("                          **   * * ** *   **  ");
@@ -964,7 +966,8 @@ static void CupPour(ref int sugarLevel, ref int caffeineLevel, ref int addictive
         Thread.Sleep(600);
         Console.Clear();
 
- 
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
         System.Console.WriteLine("                          *  ** * * * * * * *");
         System.Console.WriteLine("                           * *  * ** * ** ");
         System.Console.WriteLine("                          **   * * ** *   **  ");
@@ -984,6 +987,9 @@ static void CupPour(ref int sugarLevel, ref int caffeineLevel, ref int addictive
         Thread.Sleep(600);
         Console.Clear();
 
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
         System.Console.WriteLine("                          *  ** * * * * * * *");
         System.Console.WriteLine("                           * *  * ** * ** ");
         System.Console.WriteLine("                          **   * * ** *   **  ");
@@ -1002,6 +1008,7 @@ static void CupPour(ref int sugarLevel, ref int caffeineLevel, ref int addictive
         Thread.Sleep(600);
         Console.Clear();
 
+        System.Console.WriteLine("");
         System.Console.WriteLine("                          *  ** * * * * * * *");
         System.Console.WriteLine("                           * *  * ** * ** ");
         System.Console.WriteLine("                          **   * * ** *   **  ");
@@ -1019,7 +1026,9 @@ static void CupPour(ref int sugarLevel, ref int caffeineLevel, ref int addictive
         Thread.Sleep(600);
         Console.Clear();
 
-       System.Console.WriteLine("                          *  ** * * * * * * *");
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
+        System.Console.WriteLine("                          *  ** * * * * * * *");
         System.Console.WriteLine("                           * *  * ** * ** ");
         System.Console.WriteLine("                          **   * * ** *   **  ");
         System.Console.WriteLine("                            ** ***  * *    *");
@@ -1035,6 +1044,9 @@ static void CupPour(ref int sugarLevel, ref int caffeineLevel, ref int addictive
         Thread.Sleep(600);
         Console.Clear();
 
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
         System.Console.WriteLine("                          *  ** * * * * * * *");
         System.Console.WriteLine("                           * *  * ** * ** ");
         System.Console.WriteLine("                          **   * * ** *   **  ");
@@ -1050,6 +1062,10 @@ static void CupPour(ref int sugarLevel, ref int caffeineLevel, ref int addictive
         Thread.Sleep(600);
         Console.Clear();
 
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
         System.Console.WriteLine("                          *  ** * * * * * * *");
         System.Console.WriteLine("                           * *  * ** * ** ");
         System.Console.WriteLine("  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& ");
@@ -1064,6 +1080,11 @@ static void CupPour(ref int sugarLevel, ref int caffeineLevel, ref int addictive
         Thread.Sleep(600);
         Console.Clear();
 
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
         System.Console.WriteLine("                          *  ** * * * * * * *");
         System.Console.WriteLine("  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& ");
         System.Console.WriteLine(" &                                                                &");
@@ -1077,6 +1098,12 @@ static void CupPour(ref int sugarLevel, ref int caffeineLevel, ref int addictive
         Thread.Sleep(600);
         Console.Clear();
 
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
+        System.Console.WriteLine("");
         System.Console.WriteLine("  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& ");
         System.Console.WriteLine(" &                                                                &");
         System.Console.WriteLine("&                       Your New Energy Drink                      &");
@@ -1193,7 +1220,7 @@ static void cupCaff(ref int caffeineLevel)
 {
     if (caffeineLevel == 1)
     {
-        System.Console.WriteLine("              &                    1                 & ");
+        System.Console.WriteLine("              &                   1                  & ");
         System.Console.WriteLine("               &        ____    __   ____ ____      &    ");
         System.Console.WriteLine("                &       |      /__\\  |__  |__      &");
         System.Console.WriteLine("                 &      |____ /    \\ |    |       &");
@@ -1202,7 +1229,7 @@ static void cupCaff(ref int caffeineLevel)
     }
     else if (caffeineLevel == 2)
     {
-        System.Console.WriteLine("              &                    2                 & ");
+        System.Console.WriteLine("              &                   2                  & ");
         System.Console.WriteLine("               &        ____    __   ____ ____      &    ");
         System.Console.WriteLine("                &       |      /__\\  |__  |__      &");
         System.Console.WriteLine("                 &      |____ /    \\ |    |       &");
@@ -1211,7 +1238,7 @@ static void cupCaff(ref int caffeineLevel)
     }
     else if (caffeineLevel == 3)
     {
-        System.Console.WriteLine("              &                    3                 & ");
+        System.Console.WriteLine("              &                   3                  & ");
         System.Console.WriteLine("               &        ____    __   ____ ____      &    ");
         System.Console.WriteLine("                &       |      /__\\  |__  |__      &");
         System.Console.WriteLine("                 &      |____ /    \\ |    |       &");
@@ -1220,7 +1247,7 @@ static void cupCaff(ref int caffeineLevel)
     }
     else if (caffeineLevel == 4)
     {
-        System.Console.WriteLine("              &                    4                 & ");
+        System.Console.WriteLine("              &                   4                  & ");
         System.Console.WriteLine("               &        ____    __   ____ ____      &    ");
         System.Console.WriteLine("                &       |      /__\\  |__  |__      &");
         System.Console.WriteLine("                 &      |____ /    \\ |    |       &");
@@ -1229,7 +1256,7 @@ static void cupCaff(ref int caffeineLevel)
     }
     else if (caffeineLevel == 5)
     {
-        System.Console.WriteLine("              &                    5                 & ");
+        System.Console.WriteLine("              &                   5                  & ");
         System.Console.WriteLine("               &        ____    __   ____ ____      &    ");
         System.Console.WriteLine("                &       |      /__\\  |__  |__      &");
         System.Console.WriteLine("                 &      |____ /    \\ |    |       &");
