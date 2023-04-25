@@ -98,7 +98,7 @@ static void Route(string userInput, ref int sugarLevel, ref int caffeineLevel, r
         Purchases(ref sugarLevel, ref caffeineLevel, ref addictivenessLevel,ref customersThatPurchased, ref sugarCustomersThatStoppedBy, ref caffeineCustomersThatStoppedBy, ref addictivenessCustomersThatStoppedBy, CUSTOMER_PREFERENCE_1Sugar, CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness);
         Thread.Sleep(800);
         Console.Clear();
-        Feedback(ref sugarCustomersThatStoppedBy, ref caffeineCustomersThatStoppedBy,ref addictivenessCustomersThatStoppedBy, ref customersThatPurchased,ref dayNum);
+        Feedback(ref sugarCustomersThatStoppedBy, ref caffeineCustomersThatStoppedBy,ref addictivenessCustomersThatStoppedBy, ref customersThatPurchased,ref dayNum, ref sugarLevel, ref caffeineLevel, ref addictivenessLevel,  CUSTOMER_PREFERENCE_1Sugar,  CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness);
         dayNum++;
 
         while(dayNum != 5)
@@ -126,7 +126,7 @@ static void Route(string userInput, ref int sugarLevel, ref int caffeineLevel, r
             Purchases(ref sugarLevel,ref caffeineLevel, ref addictivenessLevel, ref customersThatPurchased, ref sugarCustomersThatStoppedBy, ref addictivenessCustomersThatStoppedBy, ref caffeineCustomersThatStoppedBy, CUSTOMER_PREFERENCE_1Sugar, CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness);
             Thread.Sleep(800);
             Console.Clear();
-            Feedback(ref sugarCustomersThatStoppedBy, ref caffeineCustomersThatStoppedBy,ref addictivenessCustomersThatStoppedBy, ref customersThatPurchased,ref dayNum);
+            Feedback(ref sugarCustomersThatStoppedBy, ref caffeineCustomersThatStoppedBy,ref addictivenessCustomersThatStoppedBy, ref customersThatPurchased,ref dayNum, ref sugarLevel, ref caffeineLevel, ref addictivenessLevel,  CUSTOMER_PREFERENCE_1Sugar,  CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness);
             dayNum++;
         }
 
@@ -428,7 +428,6 @@ static void Purchases (ref int sugarLevel, ref int caffeineLevel, ref int addict
 
     //Addictiveness
 
-      //CAFFEINE
     if(CUSTOMER_PREFERENCE_3Addictiveness == addictivenessLevel)
     {
         customersThatPurchased += addictivenessCustomersThatStoppedBy;
@@ -452,7 +451,7 @@ static void Purchases (ref int sugarLevel, ref int caffeineLevel, ref int addict
 
 }
 
-static void Feedback(ref int sugarCustomersThatStoppedBy, ref int caffeineCustomersThatStoppedBy, ref int addictivenessCustomersThatStoppedBy, ref int customersThatPurchased, ref int dayNum)
+static void Feedback(ref int sugarCustomersThatStoppedBy, ref int caffeineCustomersThatStoppedBy, ref int addictivenessCustomersThatStoppedBy, ref int customersThatPurchased, ref int dayNum, ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel, int CUSTOMER_PREFERENCE_1Sugar, int CUSTOMER_PREFERENCE_2Caffeine, int CUSTOMER_PREFERENCE_3Addictiveness)
 {
     int totalCustomers = sugarCustomersThatStoppedBy + caffeineCustomersThatStoppedBy + addictivenessCustomersThatStoppedBy;
     System.Console.WriteLine(" 0000000000000000000000000000000000");
@@ -461,33 +460,144 @@ static void Feedback(ref int sugarCustomersThatStoppedBy, ref int caffeineCustom
     System.Console.WriteLine("0              DAY " + dayNum + "               0");
     System.Console.WriteLine("0                                  0");  
     System.Console.WriteLine("0 Total Customers ------------ " + totalCustomers + "  0");
-    System.Console.WriteLine("0 Total Energy Drinks Sold ---- " + customersThatPurchased + "  0");
+    System.Console.WriteLine("0 Total Energy Drinks Sold ---- " + customersThatPurchased + " 0");
     System.Console.WriteLine("0  ------------------------------  0");
     System.Console.WriteLine("0                                  0");
     System.Console.WriteLine("0             YELP Reviews         0");
     System.Console.WriteLine("0 *******************************  0");
-    System.Console.WriteLine("0  TooMuchEnergy:                  0");
-    System.Console.WriteLine("0       ' Whew! I though I was     0");
-    System.Console.WriteLine("0         drinking bland mud       0");
-    System.Console.WriteLine("0         water! :() I will not    0");
-    System.Console.WriteLine("0         be back! '               0");
-    System.Console.WriteLine("0                                  0");
-    System.Console.WriteLine("0  GotCaffeine:                    0");
-    System.Console.WriteLine("0       ' Nice pop up shop, I      0");
-    System.Console.WriteLine("0         will be back! :) '       0");
-    System.Console.WriteLine("0                                  0");
-    System.Console.WriteLine("0   TiredUAStudent:                0"); 
-    System.Console.WriteLine("0       ' Meh, Somethings not      0");
-    System.Console.WriteLine("0         right. :/ I'll stick to  0");
-    System.Console.WriteLine("0         redbull! '               0");
-    System.Console.WriteLine("0                                  0");
-    System.Console.WriteLine("0 *******************************  0");
-    System.Console.WriteLine("0           ````````````           0");
-    System.Console.WriteLine("0          -    HOME    -          0");
-    System.Console.WriteLine(" 0          ------------          0");
-    System.Console.WriteLine("  0000000000000000000000000000000");
-    
+
+    FeedbackOptions(ref sugarLevel, ref caffeineLevel,ref addictivenessLevel, CUSTOMER_PREFERENCE_1Sugar, CUSTOMER_PREFERENCE_2Caffeine, CUSTOMER_PREFERENCE_3Addictiveness);
     customersThatPurchased = 0;
     Console.WriteLine("Press any key to begin the game");
     Console.ReadKey();
+}
+
+
+static void FeedbackOptions(ref int sugarLevel, ref int caffeineLevel, ref int addictivenessLevel, int CUSTOMER_PREFERENCE_1Sugar, int CUSTOMER_PREFERENCE_2Caffeine, int CUSTOMER_PREFERENCE_3Addictiveness)
+{
+    //Sugar feedback logic
+    if(CUSTOMER_PREFERENCE_1Sugar == sugarLevel)
+    {
+        System.Console.WriteLine("0  SweetTooth:                     0");
+        System.Console.WriteLine("0       ' Whew! I though I was     0");
+        System.Console.WriteLine("0         drinking bland mud       0");
+        System.Console.WriteLine("0         water! :() I will not    0");
+        System.Console.WriteLine("0         be back! '               0");
+        System.Console.WriteLine("0                                  0");
+    }
+    else if (CUSTOMER_PREFERENCE_1Sugar== sugarLevel + 1 || CUSTOMER_PREFERENCE_1Sugar == sugarLevel -1)
+    {
+        System.Console.WriteLine("0  SugarHighGuy:                   0");
+        System.Console.WriteLine("0       ' Whew! I though I was     0");
+        System.Console.WriteLine("0         drinking bland mud       0");
+        System.Console.WriteLine("0         water! :() I will not    0");
+        System.Console.WriteLine("0         be back! '               0");
+        System.Console.WriteLine("0                                  0");
+    }
+    else if (CUSTOMER_PREFERENCE_1Sugar== sugarLevel + 2 || CUSTOMER_PREFERENCE_1Sugar == sugarLevel +3 || CUSTOMER_PREFERENCE_1Sugar == sugarLevel + 4)
+    {
+        System.Console.WriteLine("0  Sugar!YesPlease!:               0");
+        System.Console.WriteLine("0       ' Whew! I though I was     0");
+        System.Console.WriteLine("0         drinking bland mud       0");
+        System.Console.WriteLine("0         water! :() I will not    0");
+        System.Console.WriteLine("0         be back! '               0");
+        System.Console.WriteLine("0                                  0");
+    }
+    else if (CUSTOMER_PREFERENCE_1Sugar== sugarLevel - 2 || CUSTOMER_PREFERENCE_1Sugar == sugarLevel -3 || CUSTOMER_PREFERENCE_1Sugar == sugarLevel - 4)
+    {
+        System.Console.WriteLine("0  SweetVictory:                   0");
+        System.Console.WriteLine("0       ' Whew! I though I was     0");
+        System.Console.WriteLine("0         drinking bland mud       0");
+        System.Console.WriteLine("0         water! :() I will not    0");
+        System.Console.WriteLine("0         be back! '               0");
+        System.Console.WriteLine("0                                  0");
+    }
+
+
+    //CAFFEINE
+
+    if(CUSTOMER_PREFERENCE_2Caffeine == caffeineLevel)
+    {
+        System.Console.WriteLine("0  GotCaffeine:                    0");
+        System.Console.WriteLine("0       ' Nice pop up shop, I      0");
+        System.Console.WriteLine("0         will be back! :) '       0");
+        System.Console.WriteLine("0                                  0");
+    }
+    else if (CUSTOMER_PREFERENCE_2Caffeine == caffeineLevel + 1 ||CUSTOMER_PREFERENCE_2Caffeine == caffeineLevel-1)
+    {    
+        System.Console.WriteLine("0  TripleShot:                     0");
+        System.Console.WriteLine("0       ' Nice pop up shop, I      0");
+        System.Console.WriteLine("0         will be back! :) '       0");
+        System.Console.WriteLine("0                                  0");
+    }
+    else if (CUSTOMER_PREFERENCE_2Caffeine == caffeineLevel - 2 || CUSTOMER_PREFERENCE_2Caffeine == caffeineLevel  - 3|| CUSTOMER_PREFERENCE_1Sugar == sugarLevel - 4)
+    {
+        System.Console.WriteLine("0  DailyGrind:                     0");
+        System.Console.WriteLine("0       ' Nice pop up shop, I      0");
+        System.Console.WriteLine("0         will be back! :) '       0");
+        System.Console.WriteLine("0                                  0");
+    }
+    else if (CUSTOMER_PREFERENCE_2Caffeine == caffeineLevel + 2 || CUSTOMER_PREFERENCE_2Caffeine == caffeineLevel + 3 || CUSTOMER_PREFERENCE_1Sugar == sugarLevel + 4)
+    {
+        System.Console.WriteLine("0  JitterBug:                      0");
+        System.Console.WriteLine("0       ' Nice pop up shop, I      0");
+        System.Console.WriteLine("0         will be back! :) '       0");
+        System.Console.WriteLine("0                                  0");
+    }
+
+
+    //ADDICTIVENESS
+
+    if(CUSTOMER_PREFERENCE_3Addictiveness == addictivenessLevel)
+    {
+        System.Console.WriteLine("0   AddicTED:                      0"); 
+        System.Console.WriteLine("0       ' Meh, Somethings not      0");
+        System.Console.WriteLine("0         right. :/ I'll stick to  0");
+        System.Console.WriteLine("0         redbull! '               0");
+        System.Console.WriteLine("0                                  0");
+        System.Console.WriteLine("0 *******************************  0");
+        System.Console.WriteLine("0           ````````````           0");
+        System.Console.WriteLine("0          -   RECEIPT    -        0");
+        System.Console.WriteLine("0           ------------           0");
+        System.Console.WriteLine("  0000000000000000000000000000000");
+    }
+    else if (CUSTOMER_PREFERENCE_3Addictiveness == addictivenessLevel + 1 ||CUSTOMER_PREFERENCE_3Addictiveness == addictivenessLevel-1)
+    {
+        System.Console.WriteLine("0   GottaHaveIt:                   0"); 
+        System.Console.WriteLine("0       ' Meh, Somethings not      0");
+        System.Console.WriteLine("0         right. :/ I'll stick to  0");
+        System.Console.WriteLine("0         redbull! '               0");
+        System.Console.WriteLine("0                                  0");
+        System.Console.WriteLine("0 *******************************  0");
+        System.Console.WriteLine("0           ````````````           0");
+        System.Console.WriteLine("0          -   RECEIPT    -        0");
+        System.Console.WriteLine("0           ------------           0");
+        System.Console.WriteLine("  0000000000000000000000000000000");
+    }
+    else if (CUSTOMER_PREFERENCE_3Addictiveness == addictivenessLevel + 2 || CUSTOMER_PREFERENCE_3Addictiveness == addictivenessLevel + 3 || CUSTOMER_PREFERENCE_3Addictiveness == addictivenessLevel + 4 )
+    {
+        System.Console.WriteLine("0   BabyIGotIT:                    0"); 
+        System.Console.WriteLine("0       ' Meh, Somethings not      0");
+        System.Console.WriteLine("0         right. :/ I'll stick to  0");
+        System.Console.WriteLine("0         redbull! '               0");
+        System.Console.WriteLine("0                                  0");
+        System.Console.WriteLine("0 *******************************  0");
+        System.Console.WriteLine("0           ````````````           0");
+        System.Console.WriteLine("0          -   RECEIPT    -        0");
+        System.Console.WriteLine("0           ------------           0");
+        System.Console.WriteLine("  0000000000000000000000000000000");
+    }
+    else if (CUSTOMER_PREFERENCE_3Addictiveness == addictivenessLevel - 2 || CUSTOMER_PREFERENCE_3Addictiveness == addictivenessLevel - 3 || CUSTOMER_PREFERENCE_3Addictiveness == addictivenessLevel - 4 )
+    {
+        System.Console.WriteLine("0   RedbullWarrior:                0"); 
+        System.Console.WriteLine("0       ' Meh, Somethings not      0");
+        System.Console.WriteLine("0         right. :/ I'll stick to  0");
+        System.Console.WriteLine("0         redbull! '               0");
+        System.Console.WriteLine("0                                  0");
+        System.Console.WriteLine("0 *******************************  0");
+        System.Console.WriteLine("0           ````````````           0");
+        System.Console.WriteLine("0          -   RECEIPT    -        0");
+        System.Console.WriteLine("0           ------------           0");
+        System.Console.WriteLine("  0000000000000000000000000000000");
+    }
 }
