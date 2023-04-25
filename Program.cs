@@ -353,7 +353,7 @@ static void EnergyDrinkSettings(ref int sugarLevel, ref int caffeineLevel, ref i
         userInput = System.Console.ReadLine();
         if(int.TryParse(userInput, out int cupNumTemp))
         {
-            if(cupNumTemp >= 0)
+            if(cupNumTemp >= 0 && !(cupNumTemp*2 > money))
             {
                 money = money - cupNumTemp*2;
                 cupNum += cupNumTemp;
@@ -365,11 +365,16 @@ static void EnergyDrinkSettings(ref int sugarLevel, ref int caffeineLevel, ref i
                 yes = 1;
                 
             }
-            else   
+            else if (!(cupNumTemp >= 0))
             {
                 yes = -1;
                 System.Console.WriteLine("Invalid input, try again!");
             } 
+            else if ((cupNumTemp*2 > money))
+            {
+                yes = -1;
+                System.Console.WriteLine("Not enough money! Try again");
+            }
             
         }
         else
