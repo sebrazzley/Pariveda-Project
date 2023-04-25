@@ -172,7 +172,6 @@ static void WelcomeMessage()
     System.Console.WriteLine("(((((((((((((((((((((((((((((((((((((((((((((((((((((()))))))))))))))))))))))))))))))))))))))))))))))))))))))");
     System.Console.WriteLine("");
     System.Console.WriteLine("");
-    System.Console.WriteLine("                            Location: Outside steps of Hewson Hall");
     Console.WriteLine("                                      PRESS ANY KEY TO BEGIN THE GAME");
     Console.ReadKey();
 }
